@@ -1,6 +1,6 @@
 # QR-Bill
 
-With the introduction of ISO 20022 in 2019, the new QR-bill will replace all inpayment slips. This is a LaTeX invoice template that include the new Swiss QR Code.
+With the introduction of ISO 20022 in 2020, the new QR-bill will replace all inpayment slips. This is a LaTeX invoice template that include the new Swiss QR Code.
 
 The QR-bill is also know as :
 
