@@ -14,7 +14,7 @@ You just have to edit the ```paymentdata.txt``` file and compile the ```invoice.
 $ make
 ```
 ### Version
-0.1
+0.2 => reworked the Format according to V2 Style Guide https://www.paymentstandards.ch/dam/downloads/style-guide-de.pdf
 
 ### More informations
 
