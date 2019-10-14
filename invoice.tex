@@ -43,56 +43,82 @@
 	\def\y{#2}
 	\def\w{148}
 	\def\h{105}
+	
+	\def\wr{63}
 
 	\node (payementpart) [sectiontype, draw=black,color=black,thick,anchor=south east,minimum height=\h mm, minimum width=\w mm] at ($(current page.south east)+(\x mm,-\y mm)$) {};
+	
+	\node (receiptpart) [sectiontype, draw=black,color=black,thick,anchor=south east,minimum height=\h mm, minimum width=\wr mm] at ($(current page.south east)+(\x mm,-\y mm)+(-\w mm,0 mm)$) {};
 
-	\node (section_title) [sectiontype, below=of payementpart.north west, anchor=north west,minimum height=8mm, minimum width=51mm, xshift=5mm, yshift=0mm] { };
+	\node (section_title) [sectiontype, below=of payementpart.north west, anchor=north west,minimum height=7mm, minimum width=51mm, xshift=5mm, yshift=-5mm,text width=51mm] { \footnotesize{\textbf{Zahlteil}} };
+	\node (section_title) [sectiontype, below=of receiptpart.north west, anchor=north west,minimum height=7mm, minimum width=52mm, xshift=5mm, yshift=-5mm,text width=52mm] { \footnotesize{\textbf{Empfangsschein}} };
+    
+    \node (additional_info) [sectiontype, below=of payementpart.north west, anchor=north west,minimum height=10mm, minimum width=138mm, xshift=5mm, yshift=-90mm,text width=138mm] { \footnotesize{ } };
 
-	\node[texttype, below right] at (section_title.north west) { 
-		\textbf{\get{PayementTitle}} 
-	};
 
-	\node (section_scheme) [sectiontype, below=of payementpart.north west, anchor=north west,minimum height=16mm, minimum width=51mm, xshift=5mm, yshift=-8mm] { };
 
-	\node[texttype, below right] at (section_scheme.north west) { 
-		\scriptsize{\textbf{Supports}} \\ 
-		\footnotesize{\get{PayementInformation}}
-	};
-
-	\node (section_amount) [sectiontype, below=of payementpart.north west, anchor=north west,minimum height=20mm, minimum width=51mm, xshift=5mm, yshift=-80mm] { };
-
-	\node[texttype, below right] at (section_amount.north west) { 
-		\begin{tabular}{ll}
-	   	\scriptsize{\textbf{Currency}} & \scriptsize{\textbf{Amount}} \\
+	\node (section_amount) [sectiontype, below=of payementpart.north west, anchor=north west, minimum width=51mm, xshift=5mm, yshift=-68mm,text width=51mm,] {\begin{tabular}{@{}ll}
+	   	\scriptsize{\textbf{Währung}} & \scriptsize{\textbf{Betrag}} \\
 	   	\footnotesize{\get{PayementCurrency}} & \footnotesize{\get{PayementAmount}} \\
 		\end{tabular}
 	};
+	
+	\node (section_amount) [sectiontype, below=of receiptpart.north west, anchor=north west, minimum width=52mm, xshift=5mm, yshift=-68mm,text width=52mm,] {\begin{tabular}{@{}ll}
+	   	\tiny{\textbf{Währung}} & \tiny{\textbf{Betrag}} \\
+	   	\scriptsize{\get{PayementCurrency}} & \scriptsize{\get{PayementAmount}} \\
+		\end{tabular}
+	};
+	
+	\node (section_receiving_station) [sectiontype, below=of receiptpart.north west, anchor=north west, minimum width=52mm, xshift=5mm, yshift=-82mm,text width=52mm,] {\begin{flushright}\tiny{\textbf{Annahmestelle}}
+	\end{flushright}
+	};
 
-	\node (section_information) [sectiontype, below=of payementpart.north west, anchor=north west,minimum height=95mm, minimum width=87mm, xshift=56mm, yshift=-5mm] { };
 
-	\node[texttype, below right, xshift=5mm] at (section_information.north west) { 
-		\scriptsize{\textbf{Account}} \\ 
+
+
+	\node[sectiontype, below=of payementpart.north west, anchor=north west, text width=87mm, minimum width=87mm, xshift=56mm, yshift=-5mm] { 
+		\scriptsize{\textbf{Konto / Zahlbar an}} \\ 
 		\footnotesize{\get{CreditorIBAN}} \\
-		\scriptsize{\textbf{Creditor}} \\ 
 		\footnotesize{\get{CreditorName}} \\
 		\footnotesize{\get{CreditorAddress}} \\
 		\footnotesize{\get{CreditorCity}} \\
-		\scriptsize{\textbf{Reference number}} \\ 
+		\bigskip
+		\scriptsize{\textbf{Referenz}} \\ 
 		\footnotesize{\get{ReferenceNumber}} \\
-		\scriptsize{\textbf{Additional information}} \\ 
-		\footnotesize{\get{AdditionalInformation}} \\
-		\scriptsize{\textbf{Debtor}} \\ 
+	    \bigskip
+		\scriptsize{\textbf{Zahlbar durch}} \\ 
 		\footnotesize{\get{DebtorName}} \\
 		\footnotesize{\get{DebtorAddress}} \\
 		\footnotesize{\get{DebtorCity}} \\
-		\scriptsize{\textbf{Due date}} \\
-		\footnotesize{\duedate} \\
+
+	};
+	
+	\node[sectiontype, below=of receiptpart.north west, anchor=north west, text width=52mm, minimum width=52mm, xshift=5mm, yshift=-12mm]  { 
+		\tiny{\textbf{Konto / Zahlbar an}} \\ 
+		\scriptsize{\get{CreditorIBAN}} \\
+		\scriptsize{\get{CreditorName}} \\
+		\scriptsize{\get{CreditorAddress}} \\
+		\scriptsize{\get{CreditorCity}} \\
+		\bigskip
+		\tiny{\textbf{Referenz}} \\ 
+		\scriptsize{\get{ReferenceNumber}} \\
+	    \bigskip
+		\tiny{\textbf{Zahlbar durch}} \\ 
+		\scriptsize{\get{DebtorName}} \\
+		\scriptsize{\get{DebtorAddress}} \\
+		\scriptsize{\get{DebtorCity}} \\
+
 	};
 
-	\node (section_qrcode) [sectiontype, below=of payementpart.north west, anchor=north west,minimum height=46mm, minimum width=46mm, xshift=5mm, yshift=-29mm] { \qrcode[tight,nolink,height=46mm,level=H]{Stéphaneeeeeeeeeeeeasdfasdf8as90d80f8a09s8d0f8as0d8f0a80sd80f8eee} };
 
-	\node (section_swiss) [sectiontype, thin, color=red, below=of payementpart.north west, anchor=north west,minimum height=7mm, minimum width=7mm, xshift=24.5mm, yshift=-48.5mm] {
-		\includegraphics[width=7mm,height=7mm]{imgs/CH-Kreuz_7mm.png}
+
+
+
+
+	\node (section_qrcode) [sectiontype, below=of payementpart.north west, anchor=north west,minimum height=46mm, minimum width=46mm, xshift=5mm, yshift=-17mm] { \qrcode[tight,nolink,height=46mm,level=H]{lalalala} };
+
+	\node (section_swiss) [sectiontype, thin, below=of section_qrcode.north west, anchor=north west,minimum height=7mm, minimum width=7mm, xshift=19.5mm, yshift=-19.5mm] {
+		\includegraphics[width=7mm,height=7mm]{CH-Kreuz_7mm.png}
 	};
 
 \end{tikzpicture}
