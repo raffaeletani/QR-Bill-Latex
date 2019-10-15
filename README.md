@@ -2,7 +2,7 @@
 
 With the introduction of ISO 20022 in 2020, the new QR-bill will replace all inpayment slips. This is a LaTeX invoice template that include the new Swiss QR Code.
 
-The QR-bill is also know as :
+The QR-bill is also known as :
 
 	- QR-Facture (FR)
 	- QR-Rechnung (DE)
@@ -13,6 +13,9 @@ You just have to edit the ```paymentdata.txt``` file and compile the ```invoice.
 ```sh
 $ make
 ```
+
+Was using https://github.com/claudep/swiss-qr-bill to generate the qr bill part as svg before, but generating the whole document took too long.
+
 ### Version
 0.2 => reworked the Format according to V2 Style Guide https://www.paymentstandards.ch/dam/downloads/style-guide-de.pdf
 
